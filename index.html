@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>京都・大阪 5 日家庭旅遊小書（11/27–12/1）</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-cream: #FDF8EE;
+      --bg-card: #FFFDF8;
+      --bg-soft: #F6EFE0;
+      --ink-main: #3B2F2A;
+      --ink-muted: #6E5C52;
+      --accent-maple: #D96B43;
+      --accent-ginkgo: #E6A82E;
+      --accent-matcha: #6C8E68;
+      --accent-sky: #5A8FA8;
+      --border-sketch: #E5D6BE;
+      --font-scale: 1;
+    }
+
+    html.large-font {
+      --font-scale: 1.18;
+    }
+
+    body {
+      font-family: 'Zen Maru Gothic', 'Noto Sans TC', sans-serif;
+      background-color: var(--bg-cream);
+      background-image:
+        radial-gradient(#E8D8BE 1.1px, transparent 1.1px),
+        radial-gradient(#F0E4CE 1px, var(--bg-cream) 1px);
+      background-size: 28px 28px;
+      background-position: 0 0, 14px 14px;
+      color: var(--ink-main);
+      font-size: calc(18px * var(--font-scale));
+      line-height: 1.7;
+      -webkit-tap-highlight-color: rgba(217, 107, 67, 0.18);
+    }
+
+    .sketch-card {
+      background: var(--bg-card);
+      border: 2.5px solid var(--border-sketch);
+      border-radius: 26px;
+      box-shadow: 0 6px 0 #EADBC3, 0 12px 24px rgba(88, 63, 45, 0.06);
+    }
+
+    .sketch-btn {
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
+      cursor: pointer;
+    }
+
+    .sketch-btn:active {
+      transform: translateY(2px);
+    }
+
+    .day-pill {
+      border: 2.5px solid #E2D1B5;
+      background: #FFFDF9;
+      color: #5A473D;
+      border-radius: 20px;
+      box-shadow: 0 4px 0 #E6D6BC;
+    }
+
+    .day-pill.active {
+      background: #D96B43;
+      border-color: #B8512C;
+      color: #FFFFFF;
+      box-shadow: 0 4px 0 #9E401E;
+      transform: translateY(-2px);
+    }
+
+    .node-pin {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+
+    .node-pin:hover,
+    .node-pin.selected {
+      transform: translateY(-4px) scale(1.03);
+    }
+
+    .dashed-path {
+      stroke-dasharray: 8 8;
+      animation: dashFlow 22s linear infinite;
+    }
+
+    @keyframes dashFlow {
+      to {
+        stroke-dashoffset: -160;
+      }
+    }
+
+    @media print {
+      body {
+        background: #FFFFFF !important;
+        font-size: 13pt !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-only-header {
+        display: block !important;
+      }
+      .sketch-card {
+        box-shadow: none !important;
+        border: 1.5px solid #C9B596 !important;
+        break-inside: avoid;
+        margin-bottom: 14px !important;
+      }
+      .page-break {
+        break-before: page;
+      }
+    }
+
+    .print-only-header {
+      display: none;
+    }
+  </style>
+</head>
+<body class="min-h-screen pb-14">
+  <!-- 頂部可愛手繪裝飾橫幅 -->
+  <header class="max-w-5xl mx-auto px-4 pt-5 pb-3">
+    <div class="sketch-card p-4 sm:p-6 relative overflow-hidden">
+      <!-- 背景手繪小點綴 -->
+      <div class="hidden sm:block absolute -right-4 -top-4 opacity-85 pointer-events-none" aria-hidden="true">
+        <svg width="150" height="150" viewBox="0 0 150 150" fill="none">
+          <circle cx="95" cy="48" r="36" fill="#FDE6A8" />
+          <!-- 銀杏葉 -->
+          <path d="M58 92 C42 75, 45 50, 68 46 C74 30, 96 30, 102 46 C125 50, 128 75, 112 92 C100 96, 90 90, 86 84 L88 112 L82 112 L84 84 C80 90, 70 96, 58 92 Z" fill="#F2B830" stroke="#7A5212" stroke-width="2.5" stroke-linejoin="round"/>
+          <!-- 楓葉 -->
+          <path d="M36 112 L33 102 L22 104 L27 95 L18 89 L29 85 L27 75 L36 81 L40 70 L45 81 L54 75 L52 85 L63 89 L54 95 L59 104 L48 102 L45 112 L41 106 L41 124 L39 124 L39 106 Z" fill="#E06D44" stroke="#783118" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div class="space-y-1.5">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FFF2D6] border-2 border-[#EBC988] text-[#8A5A12] font-bold" style="font-size: calc(0.88rem * var(--font-scale));">
+            <span>🍂 2026/11/27 (五) – 12/1 (二)</span>
+            <span>・</span>
+            <span>銀杏・楓葉・安心慢旅</span>
+          </div>
+          <h1 class="font-black tracking-tight text-[#3B2F2A]" style="font-size: calc(1.75rem * var(--font-scale));">
+            京都・大阪 5 日家庭旅遊小書
+          </h1>
+          <p class="text-[#6E5C52] font-medium flex flex-wrap items-center gap-x-3 gap-y-1" style="font-size: calc(0.98rem * var(--font-scale));">
+            <span>🏨 住宿基地：<strong>大阪北濱佛沙飯店</strong>（HOTEL FORZA OSAKA KITAHAMA）</span>
+          </p>
+        </div>
+
+        <!-- 長輩友善操作工具列 -->
+        <div class="no-print flex flex-wrap items-center gap-2.5">
+          <button
+            id="fontToggleBtn"
+            type="button"
+            onclick="toggleFontSize()"
+            class="sketch-btn px-4 py-2.5 rounded-2xl bg-[#FFF6E5] hover:bg-[#FCE9C7] border-2 border-[#DFAF63] text-[#5E3E0B] font-bold flex items-center gap-2"
+            style="font-size: calc(0.95rem * var(--font-scale));"
+            aria-pressed="false"
+          >
+            <span aria-hidden="true">🔍</span>
+            <span id="fontToggleLabel">字體：標準（點我放大）</span>
+          </button>
+
+          <button
+            type="button"
+            onclick="window.print()"
+            class="sketch-btn px-4 py-2.5 rounded-2xl bg-[#EBF5EA] hover:bg-[#D8ECD6] border-2 border-[#7FA37B] text-[#2F522C] font-bold flex items-center gap-2"
+            style="font-size: calc(0.95rem * var(--font-scale));"
+          >
+            <span aria-hidden="true">🖨️</span>
+            <span>列印／存成小書</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 列印時顯示的溫馨小標 -->
+      <div class="print-only-header mt-3 pt-2 border-t border-dashed border-[#D8C5A5] text-sm text-[#6E5C52]">
+        本小書專為家庭長輩旅遊設計：走平緩路線、多留休息時間、準時掌握日落與搭車時間。
+      </div>
+    </div>
+  </header>
+
+  <!-- 主導覽：日期分頁 + 模式切換 -->
+  <nav class="max-w-5xl mx-auto px-4 py-2 no-print" aria-label="日期與檢視模式切換">
+    <!-- 5 日切換按鈕 -->
+    <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5 mb-3" id="dayTabs"></div>
+
+    <!-- 檢視模式切換列 -->
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 bg-[#F7EFE0] border-2 border-[#E4D3B7] rounded-2xl p-2.5">
+      <div class="flex gap-2">
+        <button
+          id="modeItineraryBtn"
+          type="button"
+          onclick="switchViewMode('itinerary')"
+          class="sketch-btn flex-1 sm:flex-none px-4 py-2.5 rounded-xl font-bold flex items-center justify-center gap-2 bg-[#D96B43] text-white shadow"
+          style="font-size: calc(0.95rem * var(--font-scale));"
+        >
+          <span aria-hidden="true">🗺️</span>
+          <span>每日行程＆插畫路線</span>
+        </button>
+        <button
+          id="modeTipsBtn"
+          type="button"
+          onclick="switchViewMode('tips')"
+          class="sketch-btn flex-1 sm:flex-none px-4 py-2.5 rounded-xl font-bold flex items-center justify-center gap-2 bg-white text-[#4A382F] border-2 border-[#DFCEB2]"
+          style="font-size: calc(0.95rem * var(--font-scale));"
+        >
+          <span aria-hidden="true">💛</span>
+          <span>長輩安心小叮嚀＆速查</span>
+        </button>
+      </div>
+
+      <!-- 週日（11/29）專屬：主案 / 備案一鍵切換 -->
+      <div id="sundayPlanSwitch" class="hidden items-center gap-2 bg-[#FFFDF8] p-1.5 rounded-xl border-2 border-[#E6C586]">
+        <span class="pl-2 font-bold text-[#8A5A12]" style="font-size: calc(0.88rem * var(--font-scale));">嵐山方案：</span>
+        <button
+          id="planMainBtn"
+          type="button"
+          onclick="setSundayPlan('main')"
+          class="sketch-btn px-3 py-1.5 rounded-lg font-bold bg-[#E6A82E] text-[#2F2107]"
+          style="font-size: calc(0.88rem * var(--font-scale));"
+        >
+          🚂 主案：搭小火車
+        </button>
+        <button
+          id="planBackupBtn"
+          type="button"
+          onclick="setSundayPlan('backup')"
+          class="sketch-btn px-3 py-1.5 rounded-lg font-bold bg-[#F5EDE0] text-[#5C493E]"
+          style="font-size: calc(0.88rem * var(--font-scale));"
+        >
+          🚃 備案：直達嵐山
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 主要內容區 -->
+  <main id="appContent" class="max-w-5xl mx-auto px-4 pt-2 space-y-5"></main>
+
+  <script>
+    // =========================================================================
+    // 手繪 SVG 插畫庫（小火車、達摩/招財貓、銀杏與楓葉、金閣寺、清水寺、御堂筋燈飾、咖啡杯、燒肉）
+    // =========================================================================
+    const ILLUSTRATIONS = {
+      hotel: `
+        <svg viewBox="0 0 88 88" class="w-14 h-14 shrink-0" fill="none">
+          <circle cx="44" cy="46" r="34" fill="#E6F2F7"/>
+          <rect x="22" y="24" width="44" height="44" rx="7" fill="#FFFDF8" stroke="#4D6E7D" stroke-width="2.5"/>
+          <path d="M22 32 H66" stroke="#D96B43" stroke-width="5"/>
+          <rect x="30" y="39" width="8" height="8" rx="2" fill="#FDE3A7" stroke="#4D6E7D" stroke-width="2"/>
+          <rect x="49" y="39" width="8" height="8" rx="2" fill="#FDE3A7" stroke="#4D6E7D" stroke-width="2"/>
+          <path d="M38 68 V54 C38 51 50 51 50 54 V68" fill="#8FB4C4" stroke="#4D6E7D" stroke-width="2.2"/>
+          <circle cx="66" cy="21" r="6" fill="#F7C95C"/>
+        </svg>`,
+      coffee: `
+        <svg viewBox="0 0 88 88" class="w-14 h-14 shrink-0" fill="none">
+          <circle cx="44" cy="48" r="33" fill="#FFF0D6"/>
+          <path d="M24 38 H58 V54 C58 63 50 68 41 68 C32 68 24 63 24 54 Z" fill="#FFFDF9" stroke="#5C3D28" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M58 42 H64 C68 42 69 53 62 54 H58" stroke="#5C3D28" stroke-width="2.5" stroke-linecap="round"/>
+          <ellipse cx="41" cy="71" rx="22" ry="4" fill="#E3C89B" stroke="#5C3D28" stroke-width="2"/>
+          <path d="M32 28 C30 22 36 20 34 15" stroke="#C47A3B" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M44 28 C42 22 48 20 46 15" stroke="#C47A3B" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M53 29 C51 24 56 22 54 18" stroke="#C47A3B" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>`,
+      train: `
+        <svg viewBox="0 0 88 88" class="w-14 h-14 shrink-0" fill="none">
+          <circle cx="44" cy="46" r="34" fill="#FCE9DE"/>
+          <rect x="20" y="28" width="48" height="30" rx="10" fill="#E6A82E" stroke="#4A3219" stroke-width="2.5"/>
+          <rect x="25" y="34" width="11" height="10" rx="3" fill="#FFFDF8" stroke="#4A3219" stroke-width="2"/>
+          <rect x="40" y="34" width="11" height="10" rx="3" fill="#FFFDF8" stroke="#4A3219" stroke-width="2"/>
+          <rect x="55" y="34" width="8" height="10" rx="3" fill="#FFFDF8" stroke="#4A3219" stroke-width="2"/>
+          <path d="M20 49 H68" stroke="#D96B43" stroke-width="4"/>
+          <circle cx="30" cy="61" r="5" fill="#5C4738" stroke="#3B2F2A" stroke-width="2"/>
+          <circle cx="58" cy="61" r="5" fill="#5C4738" stroke="#3B2F2A" stroke-width="2"/>
+          <path d="M14 67 H74" stroke="#7A6555" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>`,
+      torii: `
+        <svg viewBox="0 0 88 88" class="w-14 h-14 shrink-0" fill="none">
+          <circle cx="44" cy="48" r="33" fill="#FDE5DF"/>
+          <path d="M18 27 C34 31 54 31 70 27" stroke="#C9422B" stroke-width="6" stroke-linecap="round"/>
+          <path d="M23 36 H65" stroke="#D95338" stroke-width="4" stroke-linecap="round"/>
+          <path d="M31 29 V68" stroke="#D95338" stroke-width="5.5" stroke-linecap="round"/>
+          <path d="M57 29 V68" stroke="#D95338" stroke-width="5.5" stroke-linecap="round"/>
+          <rect x="41" y="36" width="6" height="11" fill="#E87C5A"/>
+          <path d="M25 68 H37 M51 68 H63" stroke="#5C4738" stroke-width="3" stroke-linecap="round"/>
+        </svg>`,
+      ginkgoMaple: `
+        <svg viewBox="0 0 88 88" class="w-14 h-14 shrink-0" fill="none">
+          <circle cx="44" cy="46" r="34" fill="#FFF3D1"/>
+          <!-- 銀杏 -->
+          <path d="M22 52 C12 40, 15 22, 32 20 C36 10, 50 10, 54 20 C71 22, 74 40, 64 52 C55 55, 48 51, 45 46 L46 69 L42 69 L43 46 C40 51, 32 55, 22 52 Z" fill="#F2B830" stroke="#6E4912" stroke-width="2.3" stroke-linejoin="round"/>
+          <!-- 小楓葉 -->
+          <path d="M62 66 L60 59 L52 61 L56 54 L49 50 L57 47 L56 40 L63 44 L66 36 L70 44 L77 40 L75 47 L83 50 L76 54 L80 61 L72 59 L70 66 L67 62 L67 74 L65 74 L65 62 Z" fill="#D96B43" stroke="#6E2C14" stroke-width="2" stroke-linejoin="round"/>
+        </svg>`,
+      catDaruma: `
+        <svg viewBox="0 0 88 88" class="w-14 h-14 shrink-0" fill="none">
+          <circle cx="44" cy="48" r="33" fill="#EAE6F2"/>
+          <!-- 可愛招財貓／達摩雙伴 -->
+          <path d="M24 34 L22 21 L34 27 C39 25 45 25 50 27 L62 21 L60 34 C65 39 66 47 64 55 C62 64 54 69 42 69 C29 69 21 63 20 53 C19 45 21 39 24 34 Z" fill="#4A4453" stroke="#292430" stroke-width="2.4" stroke-linejoin="round"/>
+          <ellipse cx="42" cy="54" rx="11" ry="9" fill="#F5EFE6"/>
+          <circle cx="35" cy="43" r="3" fill="#F9C74F"/>
+          <circle cx="50" cy="43" r="3" fill="#F9C74F"/>
+          <path d="M40 47 H45 L42.5 50 Z" fill="#E07A5F"/>
+          <circle cx="42" cy="54" r="2.8" fill="#E6A82E"/>
+        </svg>`,
+      kiyomizu: `
+        <svg viewBox="0 0 88 88" class="w-14 h-14 shrink-0" fill="none">
+          <circle cx="44" cy="46" r="34" fill="#FDECE2"/>
+          <path d="M18 33 L44 21 L70 33" stroke="#C95634" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="25" y="33" width="38" height="16" fill="#E68A5C" stroke="#5A3322" stroke-width="2.2"/>
+          <!-- 舞台支柱 -->
+          <path d="M22 49 H66 M28 49 V68 M44 49 V68 M60 49 V68 M28 58 L44 68 L60 58" stroke="#7A5238" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`,
+      kinkaku: `
+        <svg viewBox="0 0 88 88" class="w-14 h-14 shrink-0" fill="none">
+          <circle cx="44" cy="46" r="34" fill="#FFF2CC"/>
+          <path d="M24 32 L44 22 L64 32" stroke="#B8861B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="27" y="32" width="34" height="12" fill="#F5C84C" stroke="#7A5710" stroke-width="2.2"/>
+          <path d="M20 47 L44 39 L68 47" stroke="#B8861B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="24" y="47" width="40" height="14" fill="#FAD46B" stroke="#7A5710" stroke-width="2.2"/>
+          <path d="M16 65 H72" stroke="#78A3B8" stroke-width="3" stroke-linecap="round"/>
+        </svg>`,
+      shopping: `
+        <svg viewBox="0 0 88 88" class="w-14 h-14 shrink-0" fill="none">
+          <circle cx="44" cy="48" r="33" fill="#EBF4EC"/>
+          <path d="M25 34 H63 L66 67 H22 Z" fill="#FFFDF8" stroke="#4D6E53" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M34 34 V26 C34 20 54 20 54 26 V34" stroke="#D96B43" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="44" cy="50" r="7" fill="#F9C74F" stroke="#4D6E53" stroke-width="2"/>
+        </svg>`,
+      yakiniku: `
+        <svg viewBox="0 0 88 88" class="w-14 h-14 shrink-0" fill="none">
+          <circle cx="44" cy="48" r="33" fill="#FDE6DE"/>
+          <ellipse cx="44" cy="53" rx="24" ry="12" fill="#4A3C35" stroke="#2D221D" stroke-width="2.5"/>
+          <ellipse cx="44" cy="51" rx="18" ry="7" fill="#C94A38"/>
+          <path d="M35 50 Q44 46 53 50" stroke="#F8C8C0" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M32 37 C30 31 36 29 34 23" stroke="#E68A2E" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M44 35 C42 29 48 27 46 21" stroke="#D96B43" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M55 37 C53 31 59 29 57 23" stroke="#E68A2E" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>`,
+      illumination: `
+        <svg viewBox="0 0 88 88" class="w-14 h-14 shrink-0" fill="none">
+          <circle cx="44" cy="46" r="34" fill="#FFF3D4"/>
+          <path d="M44 68 V28" stroke="#6B533F" stroke-width="4" stroke-linecap="round"/>
+          <path d="M44 44 L27 31 M44 38 L61 25 M44 52 L25 46 M44 48 L63 42" stroke="#6B533F" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="27" cy="31" r="4.5" fill="#F7B93E"/>
+          <circle cx="61" cy="25" r="5" fill="#F7B93E"/>
+          <circle cx="25" cy="46" r="4" fill="#F7B93E"/>
+          <circle cx="63" cy="42" r="4.5" fill="#F7B93E"/>
+          <circle cx="44" cy="24" r="5" fill="#FFE082"/>
+        </svg>`,
+      airport: `
+        <svg viewBox="0 0 88 88" class="w-14 h-14 shrink-0" fill="none">
+          <circle cx="44" cy="46" r="34" fill="#E3F1F8"/>
+          <path d="M18 52 L34 48 L48 24 L54 24 L47 46 L66 42 L72 34 L76 35 L73 47 L78 51 L52 56 L36 62 L32 58 L41 53 L21 56 Z" fill="#5A8FA8" stroke="#2F5263" stroke-width="2.2" stroke-linejoin="round"/>
+          <path d="M20 68 Q44 64 68 68" stroke="#89B9CF" stroke-width="3" stroke-linecap="round"/>
+        </svg>`
+    };
+
+    // =========================================================================
+    // 5 日行程資料（完全依據確認後的景點、時段、交通與長輩友善提醒）
+    // =========================================================================
+    const TRIP_DAYS = [
+      {
+        id: 'day1',
+        tabLabel: '11/27 (五)',
+        tabSub: '抵達入住',
+        dateTitle: '11月27日（星期五）',
+        themeTitle: '平安抵達日本・入住北濱休息',
+        badgeColor: 'bg-[#E6F2F7] text-[#356275] border-[#A7CEDE]',
+        summary: '第一天不趕行程，順利抵達並前往大阪北濱佛沙飯店辦理入住，讓長輩好好伸展筋骨、早點休息儲備體力。',
+        nodes: [
+          {
+            id: 'd1-1',
+            time: '午後／傍晚',
+            place: '抵達日本關西',
+            icon: 'airport',
+            tag: '順利通關',
+            shortDesc: '入境通關後放慢腳步，準備前往大阪市區。',
+            tip: '下飛機後先上洗手間再排隊通關，隨身攜帶保暖薄外套與長輩常備藥。'
+          },
+          {
+            id: 'd1-2',
+            time: '傍晚／晚間',
+            place: '大阪北濱佛沙飯店',
+            icon: 'hotel',
+            tag: '5晚住宿基地',
+            shortDesc: '辦理入住、整理行李，熟悉飯店周邊環境。',
+            tip: '飯店鄰近北濱站與河岸，今晚早點休息，明早 07:00 準備出發去京都！'
+          },
+          {
+            id: 'd1-3',
+            time: '晚間時段',
+            place: '輕鬆休息／宵夜',
+            icon: 'coffee',
+            tag: '自由放鬆',
+            shortDesc: '在飯店附近輕鬆用餐或買點心回房休息。',
+            tip: '第一天避免走太多路，讓膝蓋與雙腳適應日本氣候與地面。'
+          }
+        ],
+        timeline: [
+          { time: '抵達後', title: '前往大阪北濱佛沙飯店入住', icon: 'hotel', note: '辦理入住手續並稍作休息，調整旅途節奏。' },
+          { time: '晚間', title: '晚間輕鬆休息／宵夜', icon: 'coffee', note: '視長輩體力就近解決晚餐或點心，早點就寢養精蓄銳。' }
+        ]
+      },
+      {
+        id: 'day2',
+        tabLabel: '11/28 (六)',
+        tabSub: '京都古寺銀杏＆夜楓',
+        dateTitle: '11月28日（星期六）',
+        themeTitle: '京都古寺金黃銀杏・黑招財貓＆清水夜楓',
+        badgeColor: 'bg-[#FFF0D6] text-[#8A5A12] border-[#E8C584]',
+        summary: '一早搭京阪本線前往京都！上午看巨大金黃銀杏與鳥居，中午逛錦市場吃午餐，午後尋黑招財貓並一路走到清水寺賞夕照與夜間參拜。',
+        nodes: [
+          {
+            id: 'd2-1',
+            time: '07:00 起',
+            place: '客美多咖啡 北濱南店',
+            icon: 'coffee',
+            tag: '早餐・近北濱站',
+            shortDesc: '07:00 開門、近北濱站，點飲料配厚片吐司暖胃出發。',
+            tip: '座位寬敞舒適，吃完直接往北濱站搭京阪本線前往京都。'
+          },
+          {
+            id: 'd2-2',
+            time: '上午第一站',
+            place: '伏見稻荷大社',
+            icon: 'torii',
+            tag: '千本鳥居地標',
+            shortDesc: '搭京阪本線前往，在入口千本鳥居區域拍照感受氣氛。',
+            tip: '全程往山上走坡度較長，長輩在主殿與前段鳥居拍照留念即可，量力而為不勉強登頂。'
+          },
+          {
+            id: 'd2-3',
+            time: '上午第二站',
+            place: '西本願寺＆平等寺 因幡堂',
+            icon: 'ginkgoMaple',
+            tag: '巨大金黃銀杏（免費）',
+            shortDesc: '欣賞西本願寺壯觀的金黃大銀杏（免費），順訪平等寺因幡堂。',
+            tip: '銀杏葉落滿地時拍照非常漂亮，地面若有落葉請留意步伐防滑。'
+          },
+          {
+            id: 'd2-4',
+            time: '中午時段',
+            place: '錦市場周邊午餐＆錦市場',
+            icon: 'shopping',
+            tag: '午間覓食・逛街',
+            shortDesc: '安排錦市場周邊午餐，順便逛逛熱鬧的京都廚房。',
+            tip: '市場內人潮較多且地面微濕，建議走側邊或挑有座位的店家用餐。'
+          },
+          {
+            id: 'd2-5',
+            time: '13:00–16:00',
+            place: '鴨川散步／檀王法林寺',
+            icon: 'catDaruma',
+            tag: '黑招財貓御守（週六限定時段）',
+            shortDesc: '沿著鴨川輕鬆散步，走訪檀王法林寺尋找可愛的黑招財貓御守。',
+            tip: '注意檀王法林寺開放時間為週六 13:00–16:00，午後順路前往剛剛好。'
+          },
+          {
+            id: 'd2-6',
+            time: '傍晚～21:30',
+            place: '二三年坂 ➔ 清水寺夜楓',
+            icon: 'kiyomizu',
+            tag: '夜間參拜 17:30–21:30（¥500）',
+            shortDesc: '漫步二年坂・三年坂前往清水寺，賞夕照與夜間點燈（門票 ¥500）。',
+            tip: '石階較多，可放慢腳步或視體力搭配計程車；晚餐安排祇園周邊晚餐後再搭車回北濱飯店。'
+          }
+        ],
+        timeline: [
+          { time: '早餐', title: '客美多咖啡 北濱南店（07:00 開門、近北濱站）', icon: 'coffee', note: '享用熱咖啡與烤吐司，準備搭京阪本線出發。' },
+          { time: '上午', title: '北濱搭京阪本線 ➔ 伏見稻荷大社', icon: 'torii', note: '拍經典鳥居與參拜，長輩可依體力在平緩前段停留。' },
+          { time: '上午', title: '西本願寺（巨大金黃銀杏，免費）＆平等寺 因幡堂', icon: 'ginkgoMaple', note: '感受京都秋末金黃銀杏的燦爛景致。' },
+          { time: '中午', title: '錦市場周邊午餐＆錦市場', icon: 'shopping', note: '享用午餐並輕鬆逛逛錦市場。' },
+          { time: '午後', title: '鴨川散步／檀王法林寺（黑招財貓御守，週六 13:00–16:00）', icon: 'catDaruma', note: '沿鴨川河畔吹風散步，前往檀王法林寺參拜與找黑招財貓。' },
+          { time: '傍晚～晚間', title: '二年坂・三年坂 ➔ 清水寺（賞夕照＋夜間參拜 17:30–21:30，¥500）', icon: 'kiyomizu', note: '欣賞清水舞台夕照與夜楓點燈之美。' },
+          { time: '晚餐＆返程', title: '祇園周邊晚餐 ➔ 搭車回大阪北濱飯店', icon: 'hotel', note: '用完晚餐後搭車返回北濱飯店休息。' }
+        ]
+      },
+      {
+        id: 'day3',
+        tabLabel: '11/29 (日)',
+        tabSub: '嵐山賞楓＆夕照金閣',
+        dateTitle: '11月29日（星期日）',
+        themeTitle: '嵐山賞楓漫遊＆趕在 16:46 日落前賞「夕照金閣」',
+        badgeColor: 'bg-[#FCE8DF] text-[#9E3F1E] border-[#EAB5A2]',
+        summary: '今天有「搭嵐山小火車主案」與「無小火車直達備案」兩種方案！最重要的時間提醒：金閣寺 17:00 閉門、當日約 16:46 日落，務必最晚 15:00 從嵐山搭計程車出發去看夕照金閣！',
+        plans: {
+          main: {
+            planBadge: '🚂 主案：搭嵐山小火車',
+            wakeNote: '一早 07:00 吃早餐出發，前往轉乘 JR 至馬堀站並步行至龜岡站搭小火車。',
+            nodes: [
+              {
+                id: 'd3m-1',
+                time: '07:00 起',
+                place: '客美多咖啡 北濱南店',
+                icon: 'coffee',
+                tag: '早餐・提早出發',
+                shortDesc: '07:00 開門、近北濱站，吃飽後搭車轉 JR 前往馬堀站。',
+                tip: '早上需要轉乘與步行前往小火車龜岡站，建議穿好走的鞋並預留轉車緩衝。'
+              },
+              {
+                id: 'd3m-2',
+                time: '小火車時段',
+                place: '嵐山小火車（龜岡➔嵯峨）',
+                icon: 'train',
+                tag: '票價 ¥880',
+                shortDesc: '步行至小火車龜岡站，搭乘小火車從龜岡前往嵯峨（¥880）。',
+                tip: '沿保津川峽谷前行風景迷人，車廂內稍涼可幫長輩備件薄外套。'
+              },
+              {
+                id: 'd3m-3',
+                time: '11:30 前',
+                place: '嵐山提早午餐＆渡月橋',
+                icon: 'ginkgoMaple',
+                tag: '渡月橋拍照・提早用餐',
+                shortDesc: '在嵐山享用提早午餐，並到渡月橋欣賞河畔與山景拍照。',
+                tip: '提早吃午餐能避開正午人潮，也讓長輩坐下來好好休息。'
+              },
+              {
+                id: 'd3m-4',
+                time: '中午過後',
+                place: '竹林小徑／御髮神社／商店街',
+                icon: 'shopping',
+                tag: '嵐山散步',
+                shortDesc: '走訪竹林小徑、御髮神社與嵐山商店街，感受自然與老街氛圍。',
+                tip: '地面以平坦步道與商店街為主，走累隨時可在路旁休息。'
+              },
+              {
+                id: 'd3m-5',
+                time: '13:15–14:45',
+                place: '常寂光寺賞楓',
+                icon: 'ginkgoMaple',
+                tag: '13:15 進入・14:45 前下山',
+                shortDesc: '13:15 進入常寂光寺賞楓，務必在 14:45 前下山準備搭車。',
+                tip: '寺內有階梯與坡道，請留足時間慢慢下山，才不會耽誤後續行程。'
+              },
+              {
+                id: 'd3m-6',
+                time: '最晚 15:00 出發',
+                place: '金閣寺（趕 16:46 夕照）',
+                icon: 'kinkaku',
+                tag: '17:00 閉門・門票 ¥500',
+                shortDesc: '最晚 15:00 搭計程車前往金閣寺（17:00 閉門，¥500），趕在 16:46 日落前賞夕照金閣！',
+                tip: '金閣寺 17:00 就關門、16:46 日落，15:00 準時搭計程車出發最保險，接著前往京都車站晚餐再回北濱飯店。'
+              }
+            ],
+            timeline: [
+              { time: '早餐', title: '客美多咖啡 北濱南店早餐 ➔ 北濱搭車轉 JR 至馬堀站', icon: 'coffee', note: '一早出發銜接 JR 路線前往馬堀站。' },
+              { time: '上午', title: '步行至小火車龜岡站 ➔ 搭嵐山小火車（龜岡➔嵯峨，¥880）', icon: 'train', note: '享受搭乘觀光小火車沿途賞景的樂趣。' },
+              { time: '中午', title: '嵐山提早午餐＆渡月橋拍照', icon: 'ginkgoMaple', note: '提早用餐避開人潮，並在渡月橋留下合影。' },
+              { time: '午後', title: '嵐山竹林小徑／御髮神社／商店街', icon: 'shopping', note: '輕鬆逛逛嵐山周邊景點與商店街。' },
+              { time: '13:15–14:45', title: '常寂光寺賞楓（13:15 進入，14:45 前下山）', icon: 'ginkgoMaple', note: '把握午後光線賞楓，務必在 14:45 前下山。' },
+              { time: '最晚 15:00', title: '搭計程車前往金閣寺（17:00 閉門，¥500；趕在 16:46 日落前賞「夕照金閣」）', icon: 'kinkaku', note: '最晚 15:00 出發，讓金箔在夕陽餘暉下閃閃發光！' },
+              { time: '晚餐＆返程', title: '京都車站晚餐 ➔ 回大阪北濱飯店', icon: 'hotel', note: '賞完夕照金閣後前往京都車站晚餐，再搭車返回北濱飯店。' }
+            ]
+          },
+          backup: {
+            planBadge: '🚃 備案：無小火車・直達嵐山',
+            wakeNote: '不用趕早轉乘小火車！早上可睡晚一點吃早餐，08:45–09:00 從容出發直達嵐山（車程約 60–70 分鐘）。',
+            nodes: [
+              {
+                id: 'd3b-1',
+                time: '早晨悠閒',
+                place: '客美多咖啡 或 Pain Karato',
+                icon: 'coffee',
+                tag: '可睡晚一點吃早餐',
+                shortDesc: '可選客美多咖啡 北濱南店或飯店對面 Pain Karato（08:00 開門），輕鬆用餐。',
+                tip: '少了一段小火車轉乘，早上節奏更放鬆，長輩可以多睡一下。'
+              },
+              {
+                id: 'd3b-2',
+                time: '08:45–09:00 出發',
+                place: '直達嵐山＆渡月橋晨間散步',
+                icon: 'train',
+                tag: '車程約 60–70 分鐘',
+                shortDesc: '08:45–09:00 從北濱出發直達嵐山，先到渡月橋晨間散步拍照。',
+                tip: '直接前往嵐山動線單純，減少轉乘奔波。'
+              },
+              {
+                id: 'd3b-3',
+                time: '11:30 前',
+                place: '竹林小徑／御髮神社／提早午餐',
+                icon: 'torii',
+                tag: '11:30 前提早午餐',
+                shortDesc: '順遊竹林小徑與御髮神社，並安排 11:30 前提早午餐。',
+                tip: '11:30 前入座用餐較不需久候，也能讓長輩坐下歇息。'
+              },
+              {
+                id: 'd3b-4',
+                time: '中午過後',
+                place: '嵐山商店街／天龍寺曹源池庭園',
+                icon: 'ginkgoMaple',
+                tag: '庭園門票 ¥500',
+                shortDesc: '逛逛嵐山商店街，並可走訪天龍寺曹源池庭園（¥500）賞景。',
+                tip: '曹源池庭園環池步道平緩好走，非常適合長輩悠閒散步。'
+              },
+              {
+                id: 'd3b-5',
+                time: '13:15–14:45',
+                place: '常寂光寺賞楓',
+                icon: 'ginkgoMaple',
+                tag: '13:15 進入・14:45 前下山',
+                shortDesc: '13:15 進入常寂光寺賞楓，同樣務必在 14:45 前下山。',
+                tip: '與主案一致，14:45 前下山才能從容銜接下午的金閣寺。'
+              },
+              {
+                id: 'd3b-6',
+                time: '最晚 15:00 出發',
+                place: '金閣寺（趕 16:46 夕照）',
+                icon: 'kinkaku',
+                tag: '17:00 閉門・門票 ¥500',
+                shortDesc: '最晚 15:00 搭計程車前往金閣寺（17:00 閉門，¥500），趕在 16:46 日落前賞夕照金閣！',
+                tip: '把握 16:46 日落前的金色時刻，之後前往京都車站晚餐再回北濱飯店。'
+              }
+            ],
+            timeline: [
+              { time: '早餐', title: '睡晚一點吃早餐（客美多咖啡 北濱南店 或 飯店對面 Pain Karato，08:00 開門）', icon: 'coffee', note: '無需早起趕小火車，早餐時間更從容。' },
+              { time: '08:45–09:00', title: '北濱出發直達嵐山（車程約 60–70 分鐘）➔ 渡月橋晨間散步', icon: 'train', note: '直接抵達嵐山，先在渡月橋邊散步賞景。' },
+              { time: '上午～11:30前', title: '竹林小徑／御髮神社／11:30 前提早午餐', icon: 'torii', note: '逛完竹林與御髮神社後，11:30 前享用午餐。' },
+              { time: '午後', title: '嵐山商店街／天龍寺曹源池庭園（¥500）', icon: 'ginkgoMaple', note: '逛商店街並欣賞天龍寺曹源池庭園之美。' },
+              { time: '13:15–14:45', title: '常寂光寺賞楓（13:15 進入，14:45 前下山）', icon: 'ginkgoMaple', note: '13:15 入寺賞楓，務必在 14:45 前下山。' },
+              { time: '最晚 15:00', title: '搭計程車前往金閣寺（17:00 閉門，¥500；趕 16:46 夕照）', icon: 'kinkaku', note: '最晚 15:00 出發，趕在 16:46 日落前欣賞夕照金閣。' },
+              { time: '晚餐＆返程', title: '京都車站晚餐 ➔ 回大阪北濱飯店', icon: 'hotel', note: '晚餐後搭車返回北濱飯店休息。' }
+            ]
+          }
+        }
+      },
+      {
+        id: 'day4',
+        tabLabel: '11/30 (一)',
+        tabSub: '梅田逛街＆道頓堀燒肉',
+        dateTitle: '11月30日（星期一）',
+        themeTitle: '梅田百貨悠閒逛街＋道頓堀燒肉＋御堂筋燈飾',
+        badgeColor: 'bg-[#FFF3CC] text-[#7D5712] border-[#E7C26B]',
+        summary: '今天完全放慢腳步！睡飽吃早餐後 09:40 出發去梅田百貨室內逛街、吹冷暖氣與坐下午茶，下午轉往心齋橋／道頓堀拍跑跑人、吃燒肉晚餐，再沿御堂筋燈飾慢慢散步回飯店（約 21:30–22:00 休息）。',
+        nodes: [
+          {
+            id: 'd4-1',
+            time: '早晨不趕車',
+            place: 'Pain Karato 或 上島珈琲店',
+            icon: 'coffee',
+            tag: 'Pain Karato 08:00／上島 07:00',
+            shortDesc: '睡飽不趕車，選飯店對面 Pain Karato（08:00 開門）或上島珈琲店（07:00 開門）吃早餐。',
+            tip: '今天百貨公司大約 10:00 才開門，早上可以悠閒吃頓好早餐。'
+          },
+          {
+            id: 'd4-2',
+            time: '09:40～午後',
+            place: '阪急梅田本店等百貨＆梅田百貨午餐',
+            icon: 'shopping',
+            tag: '有電梯・冷暖氣・座椅',
+            shortDesc: '09:40 出發往梅田，逛阪急梅田本店等百貨商圈，並在梅田百貨享用午餐。',
+            tip: '百貨室內有電梯、冷暖氣與休息座椅，走累了隨時找咖啡廳午茶歇腳。'
+          },
+          {
+            id: 'd4-3',
+            time: '午後時段',
+            place: '心齋橋筋商店街＆道頓堀／法善寺橫丁',
+            icon: 'torii',
+            tag: '御堂筋線至心齋橋／難波',
+            shortDesc: '搭御堂筋線至心齋橋／難波，逛有遮雨棚的心齋橋筋，拍道頓堀跑跑人並逛法善寺橫丁。',
+            tip: '心齋橋筋有遮雨棚、路面平坦，逛起來輕鬆自在。'
+          },
+          {
+            id: 'd4-4',
+            time: '晚餐時段',
+            place: '道頓堀燒肉晚餐',
+            icon: 'yakiniku',
+            tag: '今日重點美食',
+            shortDesc: '在道頓堀享用香噴噴的燒肉晚餐，補足一天逛街的能量。',
+            tip: '晚餐後不急著趕路，慢慢走向御堂筋大道欣賞燈飾。'
+          },
+          {
+            id: 'd4-5',
+            time: '17:00–23:00',
+            place: '御堂筋銀杏燈飾 ➔ 淀屋橋回飯店',
+            icon: 'illumination',
+            tag: '燈飾免費・約 21:30–22:00 休息',
+            shortDesc: '沿心齋橋～淀屋橋欣賞御堂筋銀杏燈飾（免費），從淀屋橋散步約 10 分鐘回北濱飯店。',
+            tip: '燈飾點亮到 23:00，今晚可放寬到約 21:30–22:00 再慢慢散步回飯店休息。'
+          }
+        ],
+        timeline: [
+          { time: '早餐', title: 'Pain Karato（08:00 開門）或上島珈琲店（07:00 開門），睡飽不趕車', icon: 'coffee', note: '早晨不設鬧鐘趕行程，悠閒享用早餐。' },
+          { time: '09:40 出發', title: '前往梅田 ➔ 阪急梅田本店等百貨室內逛街＆梅田百貨午餐', icon: 'shopping', note: '百貨公司有電梯、冷暖氣與休息座位，中午在百貨用餐最省力。' },
+          { time: '午後', title: '百貨咖啡廳午茶歇腳 ➔ 搭御堂筋線至心齋橋／難波', icon: 'coffee', note: '喝杯午茶休息後，搭御堂筋線前往心齋橋與難波方向。' },
+          { time: '傍晚前', title: '心齋橋筋商店街（有遮雨棚）＆道頓堀跑跑人拍照／法善寺橫丁散步', icon: 'torii', note: '在有遮雨棚的商店街輕鬆逛逛、拍跑跑人與法善寺橫丁。' },
+          { time: '晚餐', title: '道頓堀燒肉晚餐', icon: 'yakiniku', note: '享用美味的道頓堀燒肉晚餐。' },
+          { time: '晚間返程', title: '御堂筋銀杏燈飾散步（心齋橋～淀屋橋，17:00–23:00，免費）➔ 散步約 10 分鐘回北濱飯店', icon: 'illumination', note: '欣賞浪漫銀杏燈飾，約 21:30–22:00 從淀屋橋慢慢走約 10 分鐘回飯店休息。' }
+        ]
+      },
+      {
+        id: 'day5',
+        tabLabel: '12/1 (二)',
+        tabSub: '水岸咖啡＆平安返台',
+        dateTitle: '12月1日（星期二）',
+        themeTitle: '土佐堀川水岸晨間咖啡・準時出發往關西機場',
+        badgeColor: 'bg-[#E3F1F8] text-[#2F5B70] border-[#A3CAE0]',
+        summary: '最後一天早上在土佐堀川水岸第一排露台喝咖啡、拍河景照，10:00 回飯店拿行李，10:30 準時出發前往關西國際機場第一航廈（14:00 班機，建議 11:30–12:00 抵達 T1），開心平安返台！',
+        nodes: [
+          {
+            id: 'd5-1',
+            time: '08:00 起',
+            place: 'Brooklyn Roasting Company Kitahama',
+            icon: 'coffee',
+            tag: '08:00 開門・水岸第一排',
+            shortDesc: '在土佐堀川水岸第一排露台享受晨間咖啡，幫長輩拍美美的河景照。',
+            tip: '河邊晨風較涼，露台拍照時可幫長輩披上外套，並留意時間於 10:00 前回飯店。'
+          },
+          {
+            id: 'd5-2',
+            time: '10:00 回飯店',
+            place: '回北濱飯店拿行李',
+            icon: 'hotel',
+            tag: '確認隨身物品與護照',
+            shortDesc: '10:00 回到大阪北濱佛沙飯店整理並領取行李，檢查護照、機票與隨身物品。',
+            tip: '再次確認充電器、藥品與伴手禮是否都收齊，準備前往機場。'
+          },
+          {
+            id: 'd5-3',
+            time: '10:30 出發',
+            place: '前往關西國際機場第一航廈（T1）',
+            icon: 'airport',
+            tag: '14:00 班機・建議 11:30–12:00 抵達',
+            shortDesc: '10:30 準時出發前往關西機場第一航廈，配合 14:00 班機（建議 11:30–12:00 抵達 T1）。',
+            tip: '搭機日時間最關鍵，10:30 準時出發最安心，祝全家旅途愉快、平安返家！'
+          }
+        ],
+        timeline: [
+          { time: '08:00 起', title: 'Brooklyn Roasting Company Kitahama（08:00 開門，土佐堀川水岸第一排露台拍河景照）', icon: 'coffee', note: '在河岸露台悠閒喝咖啡、拍河景紀念照。' },
+          { time: '10:00', title: '回飯店拿行李', icon: 'hotel', note: '返回大阪北濱佛沙飯店取行李，再次確認護照與隨身物品。' },
+          { time: '10:30 出發', title: '出發前往關西國際機場第一航廈（14:00 班機，建議 11:30–12:00 抵達 T1）➔ 搭機返台', icon: 'airport', note: '10:30 準時出發前往關西機場第一航廈，辦理登機手續並平安返台。' }
+        ]
+      }
+    ];
+
+    // =========================================================================
+    // 應用程式狀態管理
+    // =========================================================================
+    let state = {
+      activeDayIndex: 0,
+      viewMode: 'itinerary', // 'itinerary' | 'tips'
+      sundayPlan: 'main',    // 'main' | 'backup'
+      selectedNodeId: null,
+      largeFont: false
+    };
+
+    function getCurrentDayData(dayIndex = state.activeDayIndex) {
+      const day = TRIP_DAYS[dayIndex];
+      if (day.id === 'day3') {
+        const plan = day.plans[state.sundayPlan];
+        return {
+          ...day,
+          activePlanKey: state.sundayPlan,
+          planBadge: plan.planBadge,
+          wakeNote: plan.wakeNote,
+          nodes: plan.nodes,
+          timeline: plan.timeline
+        };
+      }
+      return day;
+    }
+
+    function toggleFontSize() {
+      state.largeFont = !state.largeFont;
+      document.documentElement.classList.toggle('large-font', state.largeFont);
+      const btn = document.getElementById('fontToggleBtn');
+      const label = document.getElementById('fontToggleLabel');
+      btn.setAttribute('aria-pressed', String(state.largeFont));
+      label.textContent = state.largeFont ? '字體：特大舒適版（點我還原）' : '字體：標準（點我放大）';
+      render();
+    }
+
+    function selectDay(index) {
+      state.activeDayIndex = index;
+      const dayData = getCurrentDayData(index);
+      state.selectedNodeId = dayData.nodes[0]?.id || null;
+      render();
+    }
+
+    function switchViewMode(mode) {
+      state.viewMode = mode;
+      render();
+    }
+
+    function setSundayPlan(planKey) {
+      state.sundayPlan = planKey;
+      const dayData = getCurrentDayData(2);
+      state.selectedNodeId = dayData.nodes[0]?.id || null;
+      render();
+    }
+
+    function selectNode(nodeId) {
+      state.selectedNodeId = nodeId;
+      renderNodeDetailBox();
+      highlightSelectedNodePins();
+    }
+
+    function highlightSelectedNodePins() {
+      document.querySelectorAll('[data-node-pin]').forEach((el) => {
+        const isSelected = el.getAttribute('data-node-pin') === state.selectedNodeId;
+        el.classList.toggle('selected', isSelected);
+        el.classList.toggle('ring-4', isSelected);
+        el.classList.toggle('ring-[#E6A82E]', isSelected);
+      });
+    }
+
+    // =========================================================================
+    // 渲染日期分頁按鈕與模式狀態
+    // =========================================================================
+    function renderNavControls() {
+      const dayTabsEl = document.getElementById('dayTabs');
+      dayTabsEl.innerHTML = TRIP_DAYS.map((day, idx) => {
+        const isActive = idx === state.activeDayIndex;
+        return `
+          <button
+            type="button"
+            onclick="selectDay(${idx})"
+            class="sketch-btn day-pill p-2.5 sm:p-3 text-left flex flex-col justify-between ${isActive ? 'active' : ''}"
+            aria-current="${isActive ? 'page' : 'false'}"
+          >
+            <span class="font-black" style="font-size: calc(1rem * var(--font-scale));">${day.tabLabel}</span>
+            <span class="font-medium truncate ${isActive ? 'text-[#FFF4E8]' : 'text-[#7A6558]'}" style="font-size: calc(0.8rem * var(--font-scale));">${day.tabSub}</span>
+          </button>
+        `;
+      }).join('');
+
+      // 模式按鈕樣式
+      const itinBtn = document.getElementById('modeItineraryBtn');
+      const tipsBtn = document.getElementById('modeTipsBtn');
+      if (state.viewMode === 'itinerary') {
+        itinBtn.className = 'sketch-btn flex-1 sm:flex-none px-4 py-2.5 rounded-xl font-bold flex items-center justify-center gap-2 bg-[#D96B43] text-white shadow';
+        tipsBtn.className = 'sketch-btn flex-1 sm:flex-none px-4 py-2.5 rounded-xl font-bold flex items-center justify-center gap-2 bg-white text-[#4A382F] border-2 border-[#DFCEB2]';
+      } else {
+        tipsBtn.className = 'sketch-btn flex-1 sm:flex-none px-4 py-2.5 rounded-xl font-bold flex items-center justify-center gap-2 bg-[#6C8E68] text-white shadow';
+        itinBtn.className = 'sketch-btn flex-1 sm:flex-none px-4 py-2.5 rounded-xl font-bold flex items-center justify-center gap-2 bg-white text-[#4A382F] border-2 border-[#DFCEB2]';
+      }
+
+      // 週日（11/29）專屬主案/備案切換顯示
+      const sundaySwitch = document.getElementById('sundayPlanSwitch');
+      const isSunday = TRIP_DAYS[state.activeDayIndex].id === 'day3';
+      sundaySwitch.classList.toggle('hidden', !isSunday);
+      sundaySwitch.classList.toggle('flex', isSunday);
+
+      const mainBtn = document.getElementById('planMainBtn');
+      const backupBtn = document.getElementById('planBackupBtn');
+      if (state.sundayPlan === 'main') {
+        mainBtn.className = 'sketch-btn px-3 py-1.5 rounded-lg font-bold bg-[#E6A82E] text-[#2F2107] shadow-sm';
+        backupBtn.className = 'sketch-btn px-3 py-1.5 rounded-lg font-bold bg-[#F5EDE0] text-[#6E5C52]';
+      } else {
+        backupBtn.className = 'sketch-btn px-3 py-1.5 rounded-lg font-bold bg-[#6C8E68] text-white shadow-sm';
+        mainBtn.className = 'sketch-btn px-3 py-1.5 rounded-lg font-bold bg-[#F5EDE0] text-[#6E5C52]';
+      }
+    }
+
+    // =========================================================================
+    // 渲染精簡每日插畫路線圖（SVG 串聯節點＋可點擊查看貼心提醒）
+    // =========================================================================
+    function renderRouteIllustrationMap(dayData) {
+      const nodes = dayData.nodes;
+      const currentNode = nodes.find((n) => n.id === state.selectedNodeId) || nodes[0];
+      if (currentNode && state.selectedNodeId !== currentNode.id) {
+        state.selectedNodeId = currentNode.id;
+      }
+
+      // 計算 SVG 曲線串聯高度（依節點數量自適應，避免擁擠）
+      const rows = Math.ceil(nodes.length / 2);
+      const svgHeight = Math.max(150, rows * 115 + 25);
+
+      const pinButtonsHtml = nodes.map((node, i) => {
+        const isSelected = currentNode && node.id === currentNode.id;
+        return `
+          <button
+            type="button"
+            data-node-pin="${node.id}"
+            onclick="selectNode('${node.id}')"
+            class="node-pin sketch-btn text-left p-3 rounded-2xl border-2 bg-[#FFFDF8] flex items-start gap-2.5 ${
+              isSelected ? 'selected ring-4 ring-[#E6A82E] border-[#D96B43]' : 'border-[#E5D4B7] hover:border-[#D96B43]'
+            }"
+          >
+            <span class="w-7 h-7 rounded-full bg-[#D96B43] text-white font-black flex items-center justify-center shrink-0 mt-0.5" style="font-size: calc(0.85rem * var(--font-scale));">
+              ${i + 1}
+            </span>
+            <div class="min-w-0 flex-1">
+              <div class="font-bold text-[#9C5714]" style="font-size: calc(0.78rem * var(--font-scale));">${node.time}</div>
+              <div class="font-black text-[#3B2F2A] leading-snug break-words" style="font-size: calc(0.95rem * var(--font-scale));">${node.place}</div>
+              <div class="mt-1 inline-block px-2 py-0.5 rounded-full bg-[#F7EFE0] text-[#5C493E] font-medium" style="font-size: calc(0.75rem * var(--font-scale));">
+                ${node.tag}
+              </div>
+            </div>
+          </button>
+        `;
+      }).join('');
+
+      return `
+        <section class="sketch-card p-4 sm:p-6">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+            <div>
+              <span class="inline-block px-3 py-0.5 rounded-full border font-bold ${dayData.badgeColor}" style="font-size: calc(0.84rem * var(--font-scale));">
+                ${dayData.dateTitle}${dayData.planBadge ? ` ・ ${dayData.planBadge}` : ''}
+              </span>
+              <h2 class="font-black text-[#3B2F2A] mt-1" style="font-size: calc(1.32rem * var(--font-scale));">
+                ${dayData.themeTitle}
+              </h2>
+            </div>
+          </div>
+
+          <p class="text-[#5A483E] mb-4" style="font-size: calc(0.98rem * var(--font-scale));">
+            ${dayData.summary}
+          </p>
+
+          ${dayData.wakeNote ? `
+            <div class="mb-4 p-3.5 rounded-2xl bg-[#FFF6E0] border-2 border-[#ECC678] text-[#6B470C] font-bold flex items-start gap-2.5" style="font-size: calc(0.94rem * var(--font-scale));">
+              <span aria-hidden="true" class="text-xl leading-none">☀️</span>
+              <span>${dayData.wakeNote}</span>
+            </div>
+          ` : ''}
+
+          <!-- 可愛手繪插畫路線帶 -->
+          <div class="p-3.5 sm:p-4 rounded-3xl bg-[#FAF3E6] border-2 border-dashed border-[#DFC7A1] relative">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-bold text-[#6E5643] flex items-center gap-1.5" style="font-size: calc(0.92rem * var(--font-scale));">
+                <span aria-hidden="true">🖍️</span>
+                <span>當日路線節點（點選任一景點看貼心提醒）</span>
+              </span>
+            </div>
+
+            <!-- 手繪路線裝飾線（桌機顯示串聯手繪路徑） -->
+            <div class="relative">
+              <svg
+                viewBox="0 0 800 ${svgHeight}"
+                class="hidden md:block w-full h-10 mb-1 pointer-events-none"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M 40 20 Q 200 6, 400 20 T 760 20"
+                  stroke="#D96B43"
+                  stroke-width="4"
+                  fill="none"
+                  class="dashed-path"
+                  stroke-linecap="round"
+                />
+                <circle cx="40" cy="20" r="7" fill="#E6A82E" />
+                <circle cx="760" cy="20" r="7" fill="#6C8E68" />
+              </svg>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                ${pinButtonsHtml}
+              </div>
+            </div>
+
+            <!-- 選中景點的貼心提醒盒 -->
+            <div id="selectedNodeDetailBox" class="mt-4"></div>
+          </div>
+        </section>
+      `;
+    }
+
+    function renderNodeDetailBox() {
+      const box = document.getElementById('selectedNodeDetailBox');
+      if (!box) return;
+      const dayData = getCurrentDayData();
+      const node = dayData.nodes.find((n) => n.id === state.selectedNodeId) || dayData.nodes[0];
+      if (!node) return;
+
+      box.innerHTML = `
+        <div class="p-4 rounded-2xl bg-[#FFFDF9] border-2 border-[#D96B43] flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <div class="shrink-0">${ILLUSTRATIONS[node.icon] || ILLUSTRATIONS.torii}</div>
+          <div class="flex-1 space-y-1">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-full bg-[#FDE6DE] text-[#A83E1B] font-bold" style="font-size: calc(0.82rem * var(--font-scale));">
+                ${node.time}
+              </span>
+              <h3 class="font-black text-[#3B2F2A]" style="font-size: calc(1.12rem * var(--font-scale));">
+                ${node.place}
+              </h3>
+            </div>
+            <p class="text-[#4F3E35] font-medium" style="font-size: calc(0.95rem * var(--font-scale));">
+              ${node.shortDesc}
+            </p>
+            <p class="text-[#2F522C] bg-[#EEF7ED] px-3 py-1.5 rounded-xl font-bold" style="font-size: calc(0.9rem * var(--font-scale));">
+              💡 長輩貼心提醒：${node.tip}
+            </p>
+          </div>
+        </div>
+      `;
+    }
+
+    // =========================================================================
+    // 渲染每日行程卡片清單
+    // =========================================================================
+    function renderDailyItineraryCards(dayData) {
+      return `
+        <section class="sketch-card p-4 sm:p-6">
+          <h3 class="font-black text-[#3B2F2A] mb-4 flex items-center gap-2" style="font-size: calc(1.22rem * var(--font-scale));">
+            <span aria-hidden="true">📖</span>
+            <span>${dayData.tabLabel} 行程小書卡片</span>
+          </h3>
+
+          <div class="space-y-3.5">
+            ${dayData.timeline.map((item, idx) => `
+              <div class="p-3.5 sm:p-4 rounded-2xl bg-[#FFFDF9] border-2 border-[#EADAC0] flex items-start gap-3.5">
+                <div class="shrink-0 flex flex-col items-center">
+                  ${ILLUSTRATIONS[item.icon] || ILLUSTRATIONS.torii}
+                  <span class="mt-1 px-2 py-0.5 rounded-full bg-[#F4EAD8] text-[#6B5443] font-bold" style="font-size: calc(0.75rem * var(--font-scale));">
+                    第 ${idx + 1} 站
+                  </span>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="inline-block px-2.5 py-0.5 rounded-lg bg-[#FFF1D6] text-[#85540E] font-bold mb-1" style="font-size: calc(0.84rem * var(--font-scale));">
+                    🕒 ${item.time}
+                  </div>
+                  <h4 class="font-black text-[#3B2F2A] leading-snug" style="font-size: calc(1.06rem * var(--font-scale));">
+                    ${item.title}
+                  </h4>
+                  <p class="text-[#665348] mt-1" style="font-size: calc(0.94rem * var(--font-scale));">
+                    ${item.note}
+                  </p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </section>
+      `;
+    }
+
+    // =========================================================================
+    // 渲染「長輩安心小叮嚀 / 每日重點速查」分頁
+    // =========================================================================
+    function renderElderlyTipsView() {
+      return `
+        <section class="sketch-card p-4 sm:p-6 space-y-5">
+          <div>
+            <span class="inline-block px-3 py-0.5 rounded-full bg-[#EBF5EA] text-[#2F522C] border border-[#8CB388] font-bold" style="font-size: calc(0.84rem * var(--font-scale));">
+              全家安心指南
+            </span>
+            <h2 class="font-black text-[#3B2F2A] mt-1" style="font-size: calc(1.35rem * var(--font-scale));">
+              長輩安心小叮嚀 ＆ 5 日關鍵時間速查
+            </h2>
+          </div>
+
+          <!-- 關鍵時間與重點提醒 -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+            <div class="p-4 rounded-2xl bg-[#FFF6E0] border-2 border-[#EBC475] flex items-start gap-3">
+              ${ILLUSTRATIONS.kinkaku}
+              <div>
+                <h3 class="font-black text-[#6B470C]" style="font-size: calc(1.05rem * var(--font-scale));">11/29 (日) 夕照金閣寺黃金時間</h3>
+                <p class="text-[#5C441B] mt-1" style="font-size: calc(0.92rem * var(--font-scale));">
+                  常寂光寺 <strong>13:15 進入、14:45 前下山</strong>；<strong>最晚 15:00 搭計程車</strong>去金閣寺（<strong>17:00 閉門</strong>、門票 ¥500），趕在 <strong>16:46 日落前</strong>看夕照金閣最美！
+                </p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-[#E3F1F8] border-2 border-[#9AC3D8] flex items-start gap-3">
+              ${ILLUSTRATIONS.airport}
+              <div>
+                <h3 class="font-black text-[#264E61]" style="font-size: calc(1.05rem * var(--font-scale));">12/1 (二) 返台搭機關鍵時刻</h3>
+                <p class="text-[#355A6B] mt-1" style="font-size: calc(0.92rem * var(--font-scale));">
+                  08:00 在 Brooklyn Roasting Company Kitahama 喝咖啡拍河景，<strong>10:00 回飯店拿行李</strong>，<strong>10:30 出發</strong>往關西機場第一航廈（14:00 班機，建議 11:30–12:00 抵達 T1）。
+                </p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-[#FCECE6] border-2 border-[#E6B29E] flex items-start gap-3">
+              ${ILLUSTRATIONS.torii}
+              <div>
+                <h3 class="font-black text-[#8F3516]" style="font-size: calc(1.05rem * var(--font-scale));">11/28 (六) 檀王法林寺與清水夜楓</h3>
+                <p class="text-[#6E3420] mt-1" style="font-size: calc(0.92rem * var(--font-scale));">
+                  檀王法林寺黑招財貓御守開放時段為<strong>週六 13:00–16:00</strong>；清水寺夜間參拜為 <strong>17:30–21:30</strong>（¥500），石階多請放慢腳步。
+                </p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-[#FFF3CC] border-2 border-[#E3BE62] flex items-start gap-3">
+              ${ILLUSTRATIONS.illumination}
+              <div>
+                <h3 class="font-black text-[#75500D]" style="font-size: calc(1.05rem * var(--font-scale));">11/30 (一) 梅田逛街＆御堂筋燈飾</h3>
+                <p class="text-[#5E4516] mt-1" style="font-size: calc(0.92rem * var(--font-scale));">
+                  上午 09:40 出發逛梅田百貨（有電梯、冷暖氣與座椅），下午逛心齋橋／道頓堀吃燒肉晚餐，御堂筋燈飾（17:00–23:00，免費）賞完從淀屋橋散步約 10 分鐘回飯店（約 21:30–22:00 休息）。
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 通用長輩貼心守則 -->
+          <div class="p-4 rounded-2xl bg-[#FAF3E6] border-2 border-[#E3D1B2]">
+            <h3 class="font-black text-[#3B2F2A] mb-2 flex items-center gap-2" style="font-size: calc(1.08rem * var(--font-scale));">
+              <span>🧣</span>
+              <span>出發前＆每日隨身小叮嚀</span>
+            </h3>
+            <ul class="space-y-2 text-[#4F3E35]" style="font-size: calc(0.95rem * var(--font-scale));">
+              <li>• <strong>洋蔥式保暖＋好走鞋：</strong>11 月底至 12 月初早晚溫差較大，建議穿方便穿脫的保暖外套與防滑好走的健走鞋。</li>
+              <li>• <strong>走累就歇腳、不勉強爬高：</strong>伏見稻荷大社與寺院階梯可依長輩體力量力而為，隨時利用百貨座椅、咖啡廳與計程車省力。</li>
+              <li>• <strong>隨身物品與飯店資訊：</strong>出門前確認護照、交通卡與常備藥品，回程搭車日（12/1）務必留足時間準時出發。</li>
+            </ul>
+          </div>
+        </section>
+      `;
+    }
+
+    // =========================================================================
+    // 主渲染函式
+    // =========================================================================
+    function render() {
+      renderNavControls();
+      const appContent = document.getElementById('appContent');
+      const dayData = getCurrentDayData();
+
+      if (state.viewMode === 'tips') {
+        appContent.innerHTML = renderElderlyTipsView();
+      } else {
+        appContent.innerHTML = `
+          ${renderRouteIllustrationMap(dayData)}
+          ${renderDailyItineraryCards(dayData)}
+        `;
+        renderNodeDetailBox();
+      }
+    }
+
+    // 啟動初始化
+    window.addEventListener('DOMContentLoaded', () => {
+      state.selectedNodeId = getCurrentDayData(0).nodes[0]?.id || null;
+      render();
+    });
+  </script>
+</body>
+</html>
